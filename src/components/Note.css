@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Merienda:wght@600&family=Patrick+Hand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital@1&display=swap');
+
+.noteArea{
+    background-color: yellow;
+    height: 140px;
+    max-width: 233px;
+    resize: none;
+    outline: none;
+    overflow: hidden;
+    font-family: 'Merienda', cursive;
+}
+
+.charLimit{
+    font-family: 'Ubuntu Mono', monospace;
+}
