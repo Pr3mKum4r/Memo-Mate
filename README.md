@@ -1,70 +1,26 @@
-# Getting Started with Create React App
+# Memo Mate
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Memo-Mate is a React application designed specifically for students to enhance their note-taking experience. It offers a user-friendly interface that allows students to create, organize, and store their notes efficiently. The app also incorporates essential login and signup functionality to ensure user privacy and personalized note management.
 
-## Available Scripts
+The login and signup functionality of Memo-Mate provides students with individual accounts, ensuring their notes remain secure and accessible only to them. By creating a personalized profile, students can save their preferences, sync their notes across multiple devices, and have a seamless note-taking experience.
 
-In the project directory, you can run:
 
-### `npm start`
+## Demo
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Main Page
+![image](https://github.com/Pr3mKum4r/Memo-Mate/assets/92014379/61bcf4d3-d4ae-4677-a0e0-4b63a09805f1)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+User Menu
+![image](https://github.com/Pr3mKum4r/Memo-Mate/assets/92014379/eac413bb-5bdf-4a7f-834e-637a58ca1a3c)
 
-### `npm test`
+Profile Page
+![image](https://github.com/Pr3mKum4r/Memo-Mate/assets/92014379/287b9a79-1af5-48b2-8338-b932178d8aac)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+auth0 Login Page
+![image](https://github.com/Pr3mKum4r/Memo-Mate/assets/92014379/eb5dbd80-c6c1-4b1a-8a51-5ec16bfcd70e)
 
-### `npm run build`
+Error Modals
+![image](https://github.com/Pr3mKum4r/Memo-Mate/assets/92014379/c9180cb1-27cc-4fb8-8e0e-8e78d905e2ef)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
