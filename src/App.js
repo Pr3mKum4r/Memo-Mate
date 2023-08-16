@@ -35,33 +35,53 @@ function App() {
   const [isProfile, setIsProfile] = useState(false);
 
   const addNote = (text) => {
+    if(user){
     const date = new Date();
-    const newNote = {
-      id: Math.random() * 100 + 1,
+    let newNote = {
+      id: Math.floor(Math.random() * 100000 + 1),
       text: text,
       date: date.toLocaleDateString(),
     };
-    const newNotes = [...noteContent, newNote];
-    localStorage.setItem('notes', JSON.stringify(newNotes));
-    setNoteContent(newNotes);
-    Axios.post('http://localhost:4000/save', {
+    // const newNotes = [...noteContent, newNote];
+    // // localStorage.setItem('notes', JSON.stringify(newNotes));
+    // setNoteContent(newNotes);
+    Axios.post('https://memo-mate-server.onrender.com/save', {
       NoteDataId: newNote.id,
       NoteDataText: newNote.text,
       NoteDataDate: newNote.date,
       UserId: user.email,
     })
+    .then(response => {
+      newNote = response.data.data;
+      const newNotes = [...noteContent, newNote];
+      setNoteContent(newNotes);
+    })}
+    else{
+      onOpen();
+      setErrorTitle('User Access Error');
+      setErrorMsg('Login first to add your first note!');
+      setErrorButton('OK');
+    }
   };
 
-  useEffect(() => {
-    const localNotes = JSON.parse(localStorage.getItem('notes'));
-    setNoteContent(localNotes);
-  }, [])
+  // useEffect(() => {
+  //   const localNotes = JSON.parse(localStorage.getItem('notes'));
+  //   setNoteContent(localNotes);
+  // }, [])
 
 
 
-  const deleteNote = (id) => {
-    const newNotes = noteContent.filter((note) => note.id !== id);
-    localStorage.setItem('notes', JSON.stringify(newNotes));
+  const deleteNote = async (id) => {
+    // localStorage.setItem('notes', JSON.stringify(newNotes));
+    try {
+      const response = await Axios.delete(`https://memo-mate-server.onrender.com/deleteNote/${id}`);
+      if (response.status === 200) {
+        console.log("Note Deleted Successfully");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+    const newNotes = noteContent.filter((note) => note.UserData.NoteDataId !== id);
     setNoteContent(newNotes);
   };
 
@@ -104,15 +124,26 @@ function App() {
   }
 
 
-  useEffect(()=>{
-    fetch("http://localhost:4000/getUserData", {
-      method: "GET"
-    })
-      .then((res)=>res.json())
-      .then((data)=> {
+  useEffect(() => {
+    // fetch("http://localhost:4000/getUserData", {
+    //   method: "GET"
+    // })
+    //   .then((res)=>res.json())
+    //   .then((data)=> {
+    //     console.log(data);
+    //   })
+    if(user){
+    Axios.post('https://memo-mate-server.onrender.com/getUserData', {email: user.email})
+      .then(response => response.data)
+      .then(data => {
         console.log(data);
+        console.log(data.data);
+        setNoteContent(data.data);
       })
-  }, [isAuthenticated, noteContent])
+      .catch(error => {
+        // Handle errors
+      });}
+  }, [isAuthenticated, user])
 
   let avatar =
     "https://w7.pngwing.com/pngs/205/731/png-transparent-default-avatar-thumbnail.png";
