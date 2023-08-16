@@ -8,6 +8,7 @@ import Profile from "./components/Profile";
 import { extendTheme } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
 import Axios from 'axios';
+import LoadingModal from "./components/LoadingModal";
 
 
 
@@ -16,6 +17,7 @@ function App() {
   const [errorTitle, setErrorTitle] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
   const [errorButton, setErrorButton] = useState('Ok');
+  const [isLoading, setIsLoading] = useState(false);
 
   const theme = extendTheme({
     styles: {
@@ -34,29 +36,34 @@ function App() {
 
   const [isProfile, setIsProfile] = useState(false);
 
-  const addNote = (text) => {
-    if(user){
-    const date = new Date();
-    let newNote = {
-      id: Math.floor(Math.random() * 100000 + 1),
-      text: text,
-      date: date.toLocaleDateString(),
-    };
-    // const newNotes = [...noteContent, newNote];
-    // // localStorage.setItem('notes', JSON.stringify(newNotes));
-    // setNoteContent(newNotes);
-    Axios.post('https://memo-mate-server.onrender.com/save', {
-      NoteDataId: newNote.id,
-      NoteDataText: newNote.text,
-      NoteDataDate: newNote.date,
-      UserId: user.email,
-    })
-    .then(response => {
-      newNote = response.data.data;
-      const newNotes = [...noteContent, newNote];
-      setNoteContent(newNotes);
-    })}
-    else{
+  const addNote = async (text) => {
+    if (user) {
+      setIsLoading(true);
+      const date = new Date();
+      let newNote = {
+        id: Math.floor(Math.random() * 100000 + 1),
+        text: text,
+        date: date.toLocaleDateString(),
+      };
+      // const newNotes = [...noteContent, newNote];
+      // // localStorage.setItem('notes', JSON.stringify(newNotes));
+      // setNoteContent(newNotes);
+
+      await Axios.post('https://memo-mate-server.onrender.com/save', {
+        NoteDataId: newNote.id,
+        NoteDataText: newNote.text,
+        NoteDataDate: newNote.date,
+        UserId: user.email,
+      })
+        .then(response => {
+          newNote = response.data.data;
+          const newNotes = [...noteContent, newNote];
+          setNoteContent(newNotes);
+        });
+
+      setIsLoading(false);
+    }
+    else {
       onOpen();
       setErrorTitle('User Access Error');
       setErrorMsg('Login first to add your first note!');
@@ -73,6 +80,9 @@ function App() {
 
   const deleteNote = async (id) => {
     // localStorage.setItem('notes', JSON.stringify(newNotes));
+
+    setIsLoading(true);
+
     try {
       const response = await Axios.delete(`https://memo-mate-server.onrender.com/deleteNote/${id}`);
       if (response.status === 200) {
@@ -83,6 +93,8 @@ function App() {
     }
     const newNotes = noteContent.filter((note) => note.UserData.NoteDataId !== id);
     setNoteContent(newNotes);
+
+    setIsLoading(false);
   };
 
   const profileHandler = () => {
@@ -132,17 +144,23 @@ function App() {
     //   .then((data)=> {
     //     console.log(data);
     //   })
-    if(user){
-    Axios.post('https://memo-mate-server.onrender.com/getUserData', {email: user.email})
-      .then(response => response.data)
-      .then(data => {
-        console.log(data);
-        console.log(data.data);
-        setNoteContent(data.data);
-      })
-      .catch(error => {
-        // Handle errors
-      });}
+    const getNotes = async () => {
+      setIsLoading(true);
+      if (user) {
+        await Axios.post('https://memo-mate-server.onrender.com/getUserData', { email: user.email })
+          .then(response => response.data)
+          .then(data => {
+            console.log(data);
+            console.log(data.data);
+            setNoteContent(data.data);
+          })
+          .catch(error => {
+            // Handle errors
+          });
+      }
+      setIsLoading(false);
+    }
+    getNotes();
   }, [isAuthenticated, user])
 
   let avatar =
@@ -166,6 +184,7 @@ function App() {
 
   return (
     <>
+      <LoadingModal isLoading={isLoading} msg={'Loading'} />
       <Navbar onLogin={loginWithRedirect} onLogout={logoutHandler} avatar={avatar} onProfile={profileHandler} />
       {isProfile ? (
         <ChakraProvider theme={theme}>
