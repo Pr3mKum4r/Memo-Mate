@@ -4,6 +4,8 @@ Memo-Mate is a React application designed specifically for students to enhance t
 
 The login and signup functionality of Memo-Mate provides students with individual accounts, ensuring their notes remain secure and accessible only to them. By creating a personalized profile, students can save their preferences, sync their notes across multiple devices, and have a seamless note-taking experience.
 
+## Deployed on Vercel
+https://memo-mate.vercel.app/
 
 ## Demo
 
