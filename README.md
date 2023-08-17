@@ -8,19 +8,24 @@ The login and signup functionality of Memo-Mate provides students with individua
 ## Demo
 
 Main Page
-![image](https://github.com/Pr3mKum4r/Memo-Mate/assets/92014379/61bcf4d3-d4ae-4677-a0e0-4b63a09805f1)
+![image](https://github.com/Pr3mKum4r/Memo-Mate/assets/92014379/c3ede6bc-0691-4968-9ad7-60b7c5a6bc91)
 
 User Menu
-![image](https://github.com/Pr3mKum4r/Memo-Mate/assets/92014379/eac413bb-5bdf-4a7f-834e-637a58ca1a3c)
+![image](https://github.com/Pr3mKum4r/Memo-Mate/assets/92014379/57aa04c7-3daa-4fba-8867-fd1571ccb105)
 
 Profile Page
-![image](https://github.com/Pr3mKum4r/Memo-Mate/assets/92014379/287b9a79-1af5-48b2-8338-b932178d8aac)
+![image](https://github.com/Pr3mKum4r/Memo-Mate/assets/92014379/33141e23-2c2c-4bb6-a218-dd3b286b6f88)
 
 auth0 Login Page
-![image](https://github.com/Pr3mKum4r/Memo-Mate/assets/92014379/eb5dbd80-c6c1-4b1a-8a51-5ec16bfcd70e)
+![image](https://github.com/Pr3mKum4r/Memo-Mate/assets/92014379/4c4c2795-dc82-4777-afd8-944d4b743277)
+
+Loader
+![image](https://github.com/Pr3mKum4r/Memo-Mate/assets/92014379/fcc364c5-132f-4fda-b02b-a2e716a49026)
 
 Error Modals
-![image](https://github.com/Pr3mKum4r/Memo-Mate/assets/92014379/c9180cb1-27cc-4fb8-8e0e-8e78d905e2ef)
+![image](https://github.com/Pr3mKum4r/Memo-Mate/assets/92014379/b00f18cb-a3bd-4424-9e17-d9365de9a8dc)
+
+
 
 
 
